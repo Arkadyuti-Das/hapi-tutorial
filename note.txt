@@ -1,0 +1,14 @@
+Introduction to plugins
+========================
+If it's a hapi plugin we need to register it with our server. 
+options allow us to customize how the plugin works.
+
+(Worked with hapi-geo-locate plugin)
+npm i hapi-geo-locate
+
+Serving static files
+====================
+(inert
+A plugin that provides new handler methods for serving static files and directories)
+npm install @hapi/inert
+

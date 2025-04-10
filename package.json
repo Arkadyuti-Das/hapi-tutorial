@@ -1,0 +1,23 @@
+{
+  "name": "myproject",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@hapi/hapi": "^21.4.0",
+    "@hapi/inert": "^7.1.0",
+    "hapi-geo-locate": "^4.1.1",
+    "joi": "^17.13.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}
