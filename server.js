@@ -44,7 +44,7 @@ const init=async()=>{
             handler: (request, h)=>{
                 return h.file("welcome.html", {
                     mode: "inline",
-                    filename: "welcome-file.html"
+                    filename: "welcome.html"
                 })
             }
         },
@@ -71,6 +71,17 @@ const init=async()=>{
             path: "/{any*}",      //Any route that doesn't match after /
             handler: (request, h)=>{
                 return "404 not found";
+            }
+        },{
+            method: "POST",
+            path: "/login",
+            handler: (request, h)=>{
+                if (request.payload.username=="abcd"){
+                    return h.file("login.html");
+                }
+                else{
+                    return h.redirect("/");
+                }
             }
         }
     ]);

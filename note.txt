@@ -22,3 +22,11 @@ So instead of using "options", we would use "routes" in the server and the same 
 
 inert also lets us to download files as well as display them.
 Setting the mode to "attachment" makes the file become a download as opposed to being displayed.
+
+Working with forms
+===================
+<input type="text" name="username"> is accessed in hapi by the name attribute as -
+request.payload.username
+
+Always remember the handler method must return a value.
+
