@@ -43,7 +43,7 @@ const init=async()=>{
             path: "/download",
             handler: (request, h)=>{
                 return h.file("welcome.html", {
-                    mode: "attachment",
+                    mode: "inline",
                     filename: "welcome-file.html"
                 })
             }
