@@ -12,3 +12,13 @@ Serving static files
 A plugin that provides new handler methods for serving static files and directories)
 npm install @hapi/inert
 
+note-
+handler says what to do,
+options say how to do it or gives extra information about the route.
+
+If I am using h.file to any other route other than the specified one, it won't be able to find it.
+So for that I need to set that up on the server. 
+So instead of using "options", we would use "routes" in the server and the same thing would follow it.
+
+inert also lets us to download files as well as display them.
+Setting the mode to "attachment" makes the file become a download as opposed to being displayed.

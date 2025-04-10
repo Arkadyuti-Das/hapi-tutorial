@@ -6,7 +6,12 @@ const path=require("path");
 const init=async()=>{
     const server=Hapi.server({
         port: 3000,
-        host: "localhost"
+        host: "localhost",
+        routes:{
+            files:{
+                relativeTo: path.join(__dirname, "static")
+            }
+        }
     });
 
     await server.start();
@@ -31,11 +36,16 @@ const init=async()=>{
             handler: (request, h)=>{
                 // return "Hello World";
                 return h.file("welcome.html");
-            },
-            options:{
-                files:{
-                    relativeTo: path.join(__dirname, "static")
-                }
+            }
+        },
+        {
+            method: "GET",
+            path: "/download",
+            handler: (request, h)=>{
+                return h.file("welcome.html", {
+                    mode: "attachment",
+                    filename: "welcome-file.html"
+                })
             }
         },
         {
