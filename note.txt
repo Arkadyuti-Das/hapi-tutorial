@@ -30,3 +30,27 @@ request.payload.username
 
 Always remember the handler method must return a value.
 
+serving dynamic files
+=====================
+We would be using the plugin vison
+npm install @hapi/vision
+
+So vision allows us to use template engines in our hapi application.
+template engines add code to our HTML file.
+
+After installing vision we would install handlebars as-
+npm install handlebars
+
+we need to make it available to our hapi vison and to our server.
+
+server.views -> used to configure our template engines
+The key "engines" specifies what templating engine handles the given file extension.
+Here we are saying have handlebars handle html files.
+
+
+The path key makes it so that we do not need to specify the exact location of dynamic pages.
+It is saying "hey server if you need a dynamic file look here".
+
+To link views to our server we need to set up a route.
+
+h.view () is used to render a template file with dynamic data.

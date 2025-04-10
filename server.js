@@ -26,8 +26,19 @@ const init=async()=>{
         },
         {
             plugin: require("@hapi/inert")
+        },
+        {
+            plugin: require("@hapi/vision")
         }
     ]);
+
+    server.views({
+        engines:{
+            hbs: require("handlebars")
+        },
+        path: path.join(__dirname, "views"),
+        layout: "default"
+    })
 
     server.route([
         {
@@ -61,9 +72,9 @@ const init=async()=>{
             path: "/location",
             handler: (request, h)=>{
                 if (request.location){
-                    return request.location;
+                    return h.view("location", {location: request.location.ip});
                 }
-                return "Location not enabled";
+                return h.view("location", {location: "Location is not enabled"});
             }
         },
         {
@@ -76,12 +87,16 @@ const init=async()=>{
             method: "POST",
             path: "/login",
             handler: (request, h)=>{
-                if (request.payload.username=="abcd"){
-                    return h.file("login.html");
-                }
-                else{
-                    return h.redirect("/");
-                }
+                return h.view("index", {username: request.payload.username})
+            }
+        },{
+            method: "GET",
+            path: "/dynamic",
+            handler: (request, h)=>{
+                const data={
+                    username: "Abcd"
+                };
+                return h.view("index", data) //The 1st argument is the file we wanted to render, the 2nd argument is the data we want to send along with the file.
             }
         }
     ]);
